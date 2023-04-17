@@ -1,0 +1,21 @@
+{
+    "name": "siims/clp",
+    "description": "command line parser",
+    "type": "library",
+    "license": "OSL-3.0",
+    "keywords": ["CLP","Command Line Parser"],
+    "autoload": {
+        "psr-4": {
+            "Siims\\clp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "siims",
+            "email": "system@siims.biz"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    }   
+}
