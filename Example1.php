@@ -1,7 +1,7 @@
 <?php
 /* License: OSL-3.0
    To be launched in shell environment
-   php ExampleHelloRequiredComposer.php
+   php Example1.php
 */
 
 require 'vendor/autoload.php';
