@@ -30,18 +30,21 @@ class Parser extends clp {
         echo "{$this->getFilename()} expects to get called with command line parameters. \nTry {$this->getFilename()} --help for more information\n";
     }
     function displayHelp() {
-        echo "{$this->getFilename()} hello=your_name | --h | -help | verbose | debug\n";
+        echo "{$this->getFilename()} hello=\"your_name\" | --h | -help | verbose | debug\n";
     }
 
-    function parsingCommandLineFinished() {
-        echo "Finished parsing command line.\nvar_dump:\n";
-        var_dump($this->getConfig());
+    function parsingCommandLineFinished($config,$event) {
+        echo "Finished parsing command line.\n";
+        echo "Implemented by $event\n";
+//        var_dump($this->getConfig());
     }
 
-    function callHello() {
-        echo "Hello {$this->getConfig()["values"]["hello"]}. I hope you are well.\n";
+    function callHello($config,$method) {
+        echo "Hello {$config["values"]["hello"]}. I hope you are well.\n";
+        echo "Implemented by $method\n";
     }
         
 }    
 $hello = new Parser($argv,$options);
+
 

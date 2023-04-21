@@ -106,9 +106,9 @@ class clp {
     }
 
     private function callEvent($event) {
-        if(function_exists($event)) { if(is_callable($event)) {$event();}; }
+        if(function_exists($event)) { if(is_callable($event)) {$event($this->config,$event);}; }
         if(method_exists($this,$event)) {
-            $this->$event();
+            $this->$event($this->config,$event);
         }
     }
 
@@ -143,11 +143,13 @@ class clp {
     }   
 
     private function argvGetPara($get):string {
-        $argstr=implode(' ',$this->argv) . ' ';
-        $matches=[];
-        $pattern='/(' . $get .')=(\S+) /';
-        preg_match($pattern,$argstr,$matches);
-        return $matches[2];                
+        foreach($this->argv as $arg) {
+            if(strpos($arg,$get)!==false) {
+                $matches=explode("=",$arg);
+                if(count($matches)>=2) {
+                    return $matches[1];
+                }
+            }
+        }
     }
-
 }

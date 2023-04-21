@@ -28,20 +28,15 @@ $hello = new clp($argv,$options);
 
 function displayHelp() {
     global $argv;
-    echo "$argv[0] hello=your_name | --h | -help | verbose | debug\n";
+    echo "$argv[0] hello=\"your_name\" | --h | -help | verbose | debug\n";
 }
 
-function parsingCommandLineFinished() {
+function parsingCommandLineFinished($config) {
     echo "Finished parsing command line.\n";
-    echo "This function won't have access to command line options\n";
+    print_r($config);
 }
 
-function callHello() {
-    echo "This gets called without knowing the name\n";
+function callHello($config,$method) {
+    echo "Hello {$config["values"]["hello"]}\n";
+    echo "Implemented by $method\n";
 }
-function ido($hello) {
-    echo "This function does:\n";
-var_dump($hello->getConfig());
-}
-
-ido($hello);
