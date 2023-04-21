@@ -145,7 +145,7 @@ class clp {
     private function argvGetPara($get):string {
         foreach($this->argv as $arg) {
             if(strpos($arg,$get)!==false) {
-                $matches=explode("=",$arg);
+                $matches=explode("=",$arg,2);
                 if(count($matches)>=2) {
                     return $matches[1];
                 }
